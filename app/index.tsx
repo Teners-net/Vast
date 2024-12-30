@@ -36,7 +36,7 @@ export default function HomeScreen() {
             />
           </View>
           <Text className="text-2xl text-center  text-neutral-800 text-semibold mt-10 font-semibold">
-            Sign In to Saaspro Health
+            Sign In to Vast
           </Text>
 
           <FormField
