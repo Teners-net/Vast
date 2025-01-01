@@ -38,7 +38,7 @@ export default function HomeScreen() {
           <Text className="text-2xl text-center  text-neutral-800 text-semibold mt-10 font-semibold">
             Sign In to Vast
           </Text>
-
+1
           <FormField
             value={form.email}
             title="Email"

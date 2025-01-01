@@ -1,8 +1,10 @@
 import { View, Text } from "react-native";
 import React from "react";
 import { Tabs, Redirect } from "expo-router";
-import { Home, PlusCircle, User, Wallet  } from "lucide-react-native";
+import { Home, PlusCircle, User, Wallet } from "lucide-react-native";
 import { useAuth } from "@/context/AuthContext";
+
+
 
 type TabIconProps = {
   icon: any;
@@ -10,13 +12,22 @@ type TabIconProps = {
   name: string;
   focused: boolean;
 };
+
 const TabIcon = ({ icon: Icon, color, name, focused }: TabIconProps) => {
   return (
-    <View className="items-center justify-center">
-      <Icon color={color} size={24} strokeWidth={focused ? 2.5 : 1.5} />
+    <View style={{ alignItems: "center", justifyContent: "center", flexDirection: "column",  }}>
+      <Icon
+        color={color}
+        size={24} 
+        strokeWidth={2} 
+      />
       <Text
-        className={`text-xs ${focused ? "font-semibold" : "font-normal"} mt-1`}
-        style={{ color }}
+        style={{
+          color, 
+          fontSize: 9, 
+          fontWeight: "bold",
+          marginTop: 4, 
+        }}
       >
         {name}
       </Text>
@@ -26,7 +37,7 @@ const TabIcon = ({ icon: Icon, color, name, focused }: TabIconProps) => {
 
 const TabsLayout = () => {
   const { authState } = useAuth();
-  
+
   if (!authState?.authenticated) {
     return <Redirect href="/" />;
   }
@@ -35,15 +46,20 @@ const TabsLayout = () => {
     <Tabs
       screenOptions={{
         tabBarShowLabel: false,
-        tabBarActiveTintColor: "#000",
-        tabBarInactiveTintColor: "#fff",
+        tabBarActiveTintColor: "#69247C", 
+        tabBarInactiveTintColor: "#6A669D", 
         tabBarStyle: {
-          backgroundColor: "fff",
+          backgroundColor: '#fff', 
           borderTopWidth: 1,
-          borderTopColor: "#ffff",
+          borderTopColor: '#fff',
           height: 84,
           paddingTop: 10,
           paddingBottom: 10,
+          shadowColor: '#000', 
+          shadowOffset: { width: 0, height: 4 }, 
+          shadowOpacity: 0.1, 
+          shadowRadius: 6, 
+          elevation: 5, 
         },
       }}
     >
@@ -57,18 +73,18 @@ const TabsLayout = () => {
           ),
         }}
       />
-      
+
       <Tabs.Screen
-        name="create"
+        name="wallet"
         options={{
           title: "Wallet",
           headerShown: false,
           tabBarIcon: ({ color, focused }) => (
-            <TabIcon icon={PlusCircle} color={color} name="Wallet" focused={focused} />
+            <TabIcon icon={Wallet} color={color} name="Wallet" focused={focused} />
           ),
         }}
       />
-      
+
       <Tabs.Screen
         name="profile"
         options={{
@@ -82,4 +98,5 @@ const TabsLayout = () => {
     </Tabs>
   );
 };
+
 export default TabsLayout;

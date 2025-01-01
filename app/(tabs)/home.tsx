@@ -1,12 +1,11 @@
 import React, {useState} from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { BellRing, Eye, RotateCw, Copy, Ellipsis  } from 'lucide-react-native';
+import { BellRing, Eye, RotateCw, Copy, Ellipsis, Wallet, History  } from 'lucide-react-native';
 import Features from "@/components/Features";
 
 
 const Home = () => {
-  const [accountNumberVisible, setAccountNumberVisible] = useState(false); // State to toggle visibility
 
 
   return (
@@ -79,8 +78,27 @@ const Home = () => {
         </View>
       </View>
       
+ {/* ********************** fund wallet and History section ******************* */}
+   <View className="p-4 m-5 border rounded-lg flex-row items-center justify-between bg-[#3d0270]">
+      <View className="flex-row  items-center">
+        <Wallet size={24} color="#fff" />
+        <Text className="ml-2 text-[#ffd]">Fund wallet</Text>
+      </View>
 
-      <Features/>
+      <View className="flex-row items-center">
+        <History size={24} color="#fff" />
+        <Text className="ml-2  text-white">History</Text>
+      </View>
+   
+    </View >
+ {/* ************************FEATURES SECTION ************************* */}
+    <View className="h-[20rem]">
+    <Features/>
+    </View>
+
+   
+    
+     
 
     </SafeAreaView>
   );

@@ -11,6 +11,7 @@ import "../global.css";
 import { AuthProvider } from "@/context/AuthContext";
 import { useColorScheme } from "@/hooks/useColorScheme";
 
+
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
@@ -38,11 +39,12 @@ export default function RootLayout() {
           >
             <Stack.Screen name="index" options={{ headerShown: false }} />
             <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+     
           </Stack>
           <StatusBar style="auto" />
           <Toast />
         </ThemeProvider>
-      </AuthProvider>
+      </AuthProvider> 
     </SafeAreaProvider>
   );
 }
